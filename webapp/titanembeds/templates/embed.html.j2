@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css" integrity="sha256-JHGEmB629pipTkMag9aMaw32I8zle24p3FpsEeI6oZU=" crossorigin="anonymous" />
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/embed.css') }}">
     <link id="css-theme" type="text/css" rel="stylesheet" href="">
-    
+
     <meta name="robots" content="noindex, nofollow">
-    
+
     <!--Check whether JavaScript is enabled, otherwise redirect to error page-->
     <noscript>
       <meta http-equiv="refresh" content="0; URL={{ url_for("embed.noscript") }}">
@@ -21,26 +21,26 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+
     {% if not userscalable %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
     {% endif %}
-    
+
     {% include 'seo_meta.html.j2' %}
-    
+
     <!--Provide default mobile metadata-->
     <meta name="apple-mobile-web-app-title" content="{{ guild['name']|e }}">
     <meta name="application-name" content="{{ guild['name']|e }}">
-    
+
     {% with title="Visit " + guild['name'] + " embed", description="Visit " + guild['name'] + " on Titan Embeds and chat with your friends from the comfort of your own website. This page is 100% embeddable, iFrameable and looks good on any webpages. Titan is hassle free and designed as easy to setup!", image=generate_guild_icon( guild['id'], guild['icon']) %}
       {% include "opengraph_tags.html.j2" %}
     {% endwith %}
 
-    <title>{{ guild['name']|e }} - Embed - Titan Embeds for Discord</title>
+    <title>{{ guild['name']|e }}</title>
     {% include 'google_analytics.html.j2' %}
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    
+
     <style id="user-defined-css">
       {% if css is not none %}
         {% if cssvariables is not none and css.css_var_bool %}{{ cssvariables|e }}{% endif %}
@@ -55,7 +55,7 @@
           <div class="nav-wrapper">
             <a href="#" data-activates="guild-nav" class="button-collapse {% if fixed_sidenav %}hide-on-large-only{% endif %}" id="guild-btn"><i class="material-icons">menu</i></a>
             <div class="container">
-              <a href="{{ url_for("index") }}" target="_blank" class="brand-logo"><img src="{{ url_for('static', filename='img/titanembeds_shield.png') }}" /><span class="brand-logo-text"><strong class="align-top">Titan</strong><span class="align-top">Embeds</span> <span class="betatag align-top">BETA</span></span></a>
+              <a href="https://rgchattest.rotogrinders.com/embed/456864351870124032" target="_blank" class="brand-logo"><img src="{{ url_for('static', filename='img/titanembeds_shield.png') }}" /><span class="brand-logo-text"><strong class="align-top">RG Discord</strong><span class="align-top">EmbedF</span> <span class="betatag align-top">BETA</span></span></a>
             </div>
             <a href="#" data-activates="members-nav" class="button-collapse right" id="members-btn"><i class="material-icons">people</i></a>
           </div>
@@ -66,10 +66,10 @@
           <div class="sk-child sk-double-bounce1"></div>
           <div class="sk-child sk-double-bounce2"></div>
         </div>
-        
+
         <div id="chatcontent" class="chatcontent"></div>
       </main>
-      
+
       <footer id="footer" class="footer">
         <div id="footercontainer" class="footercontainer">
           <div class="currentuserchip" id="nameplate">
@@ -159,7 +159,7 @@
           </div>
         </div>
       </div>
-    
+
     <div id="userembedmodal" class="modal">
       <div class="modal-content">
         {% if unauth_enabled %}
@@ -224,7 +224,7 @@
         </div>
       </div>
     </div>
-    
+
     <div id="recaptchamodal" class="modal">
       <div class="modal-content">
         <h4 class="center-align">{{ _("Just one more step...") }}</h4>
@@ -232,7 +232,7 @@
         <input type="hidden" id="submit-unauthenticated-captcha-btn" />
       </div>
     </div>
-    
+
     <div id="nsfwmodal" class="modal">
       <div class="modal-content">
         <h4 class="center-align"><i class="material-icons">warning</i> {{ _("NSFW Channel") }} <i class="material-icons">warning</i></h4>
@@ -243,7 +243,7 @@
         </p>
       </div>
     </div>
-    
+
     <div id="filemodal" class="modal">
       <div class="modal-content">
         <h4 class="center-align">{{ _("Attaching File") }}</h4>
@@ -268,7 +268,7 @@
         <input type="file" id="fileinput">
       </div>
     </div>
-    
+
     <div id="usercard" class="modal bottom-sheet">
       <div class="modal-content">
         <div class="row">
@@ -292,7 +292,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="wdt-emoji-popup">
       <a href="#" class="wdt-emoji-popup-mobile-closer"> × </a>
       <div class="wdt-emoji-menu-content">
@@ -330,18 +330,18 @@
         </div>
       </div>
     </div>
-    
+
     <div id="mention-picker">
       <div id="mention-picker-content">
-        
+
       </div>
     </div>
-    
+
     <!-- Electron fix -->
     <script>
       if (typeof module === "object") {
         window.module = module;
-        module = undefined;  
+        module = undefined;
       }
     </script>
 
@@ -379,7 +379,7 @@
     <script id="mustache_unauthedusers" type="text/template">
       <li><a class="waves-effect truncate"><span class="membername">{{username}}#{{discriminator}}</span></a></li>
     </script>
-    
+
     <script id="mustache_usermessage" type="text/template">
       <p><img class="authoravatar" src="{{avatar}}"> <span class="chatusername"><span class="authorname">{{username}}</span><span class="authorhash">#</span><span class="authordiscriminator">{{discriminator}}</span></span> <span id="discordmessage_{{id}}" title="{{full_timestamp}}" class="chattimestamp">{{time}}</span> <span class="chatmessage">{{{content}}}</span><span class="embeds"></span><span class="reactions"></span></p>
     </script>
@@ -387,7 +387,7 @@
     <script id="mustache_memberrole" type="text/template">
       <li><a class="subheader role-title">{{name}}</a></li>
     </script>
-    
+
     <script id="mustache_channelcategory" type="text/template">
       <li><a class="subheader channel-category">{{name}}</a></li>
     </script>
@@ -395,15 +395,15 @@
     <script id="mustache_message_emoji" type="text/template">
       <img class="message_emoji tooltipped" src='https://cdn.discordapp.com/emojis/{{id}}{{#animated}}.gif{{/animated}}{{^animated}}.png{{/animated}}' data-position="top" data-delay="200" data-tooltip=":{{name}}:" alt=":{{name}}:" />
     </script>
-    
+
     <script id="mustache_discordmention" type="text/template">
       <span class="discordmention"><span class="atsign">@</span><span class="username">{{username}}</span><span class="hash">#</span><span class="discriminator">{{discriminator}}</span></span>
     </script>
-    
+
     <script id="mustache_rolemention" type="text/template">
       <span class="rolemention" {{#color}}style="color: {{color}}"{{/color}}><span class="atsign">@</span><span class="rolename">{{rolename}}</span></span>
     </script>
-    
+
     <script id="mustache_richembed" type="text/template">
       <div class="richembed">
         {{#color}}
@@ -498,11 +498,11 @@
         </div>
       </div>
     </script>
-    
+
     <script id="mustache_rolebubble" type="text/template">
       <span class="bubble" {{#color}}style="color: {{color}};"{{/color}}><span class="color" {{#color}}style="background-color: {{color}};"{{/color}}></span> <span class="text">{{name}}</span></span>
     </script>
-    
+
     <script id="mustache_usermentionchoices" type="text/template">
         <div class="mention-choice" discorduserid="{{ id }}">
           <img src="{{ avatar }}" class="circle">
@@ -512,7 +512,7 @@
           </span>
         </div>
     </script>
-    
+
     <script id="mustache_reactionchip" type="text/template">
       <span class="reaction tooltipped" data-position="top" data-delay="200" data-tooltip="{{#emoji.id}}:{{/emoji.id}}{{emoji.name}}{{#emoji.id}}:{{/emoji.id}}"><img src="{{img_url}}"> <span class="count">{{count}}</span></span>
     </script>
@@ -528,12 +528,12 @@
     </script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/embed.js') }}"></script>
-    
+
     {% if af_mode_enabled %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/embed.af.directmessage.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/site.af.sausage.js') }}"></script>
     {% endif %}
-    
+
     <!-- Electron fix -->
     <script>
       if (window.module) {
